@@ -1,3 +1,6 @@
+###
+# puts the current scrum sprint week number combination
+
 #!/usr/bin/ruby
 
 require 'date'
