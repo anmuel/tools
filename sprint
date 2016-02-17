@@ -1,7 +1,7 @@
 ###
 # puts the current scrum sprint week number combination
 
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 
 require 'date'
 
