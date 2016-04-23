@@ -19,5 +19,9 @@ def format(number)
   sprintf("%02i", number)
 end
 
-puts "#{format(week)}_#{format(next_week)}"
+def release_version
+  `git branch`.match(/r\d+\.\d(\.\.d)?-/)
+end
+
+puts "#{release_version}#{format(week)}_#{format(next_week)}"
 exit 0
