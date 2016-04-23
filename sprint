@@ -4,6 +4,7 @@
 #!/usr/bin/envx^ ruby
 
 require 'date'
+require 'pry'
 
 week = Time.now.to_date.cweek
 next_week = 0
@@ -20,7 +21,14 @@ def format(number)
 end
 
 def release_version
-  `git branch`.match(/r\d+\.\d(\.\.d)?/)
+  ENV['NP_RELEASE_VERSION'] || match_version
+end
+
+def match_version
+  regex = /\Ar\d+\.\d+(\.\d+)?/
+  branches = `git branch`.split.select do |branch_name|
+    branch_name =~ regex
+  end.sort.last.to_s.match(regex)
 end
 
 puts "#{release_version}-s#{format(week)}_#{format(next_week)}"
