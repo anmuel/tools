@@ -1,10 +1,7 @@
-###
+#!/usr/bin/env ruby
 # puts the current scrum sprint week number combination
 
-#!/usr/bin/envx^ ruby
-
 require 'date'
-require 'pry'
 
 week = Time.now.to_date.cweek
 next_week = 0
@@ -32,4 +29,3 @@ def match_version
 end
 
 puts "#{release_version}-s#{format(week)}_#{format(next_week)}"
-exit 0
