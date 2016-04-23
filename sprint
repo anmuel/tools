@@ -1,7 +1,7 @@
 ###
 # puts the current scrum sprint week number combination
 
-#!/usr/bin/env ruby
+#!/usr/bin/envx^ ruby
 
 require 'date'
 
@@ -20,8 +20,8 @@ def format(number)
 end
 
 def release_version
-  `git branch`.match(/r\d+\.\d(\.\.d)?-?/)
+  `git branch`.match(/r\d+\.\d(\.\.d)?/)
 end
 
-puts "#{release_version}s#{format(week)}_#{format(next_week)}"
+puts "#{release_version}-s#{format(week)}_#{format(next_week)}"
 exit 0
