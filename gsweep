@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+#
+# Uses git-sweep [1] to analyse a git repository and determine all branches that have 
+# already been merged. Prints the result to a textfile.
+#
+# Arguments:
+# branch - mandatory - the branch to be checked against as the master
+# output_file - the target file path for the output
+#
+# [1] https://github.com/arc90/git-sweep
+
+BRANCH="$1"
+DIR=$(pwd)
+
+if [ -n $2 ]; then
+  OUTPUT_FILE="$DIR/git-sweep-$BRANCH.txt"
+else
+  OUTPUT_FILE="$2"
+fi
+
+echo "Starting git-sweep with master $BRANCH and writing output to $OUTPUT_FILE ..."
+
+MESSAGE="Sweeped git directory $DIR to $OUTPUT_FILE"
+(git-sweep preview --master="$BRANCH" > $OUTPUT_FILE) ;
+  notify-send -i "$([ $? = 0 ] && echo terminal || echo error)" \
+    --urgency=low "git-sweep" "$MESSAGE"
