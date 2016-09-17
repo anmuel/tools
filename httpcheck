@@ -1,3 +1,4 @@
+#!/usr/env node
 // Try to make a HTTP GET to a specified URL and retry
 // Until a success Response occurs.
 //
